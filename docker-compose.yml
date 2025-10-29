@@ -33,7 +33,7 @@ services:
 
   autoware-latest: # dont launch when running distributed
     image: ghcr.io/intelligent-testing-lab/autoware:latest
-    command: source install/setup.bash && ros2 launch autoware_manager autoware_manager.launch.xml  
+    command: ros2 launch autoware_manager autoware_manager.launch.xml  
     
     stdin_open: true
     tty: true
