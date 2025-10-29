@@ -1,0 +1,27 @@
+carla:
+  host: 127.0.0.1
+  fidelity: 'High'
+  port: 2000
+  timeout: 20
+  sync: true
+  fixed_delta_seconds: 0.05 # update rate 1 / FPS
+traffic_manager:
+  active: true
+  sync: true # must be the same as carla
+  seed: 0
+  port: 8001
+scenario_runner:
+  debug: false
+  dev_mode: false
+  follow_ego: true
+  route_id: 0
+  json: ./example_scenario.json
+  agent: srunner/autoagents/autoware_agent
+  initialisation_budget: 500 # ticks
+  algorithm:
+    enabled: false
+    iterations: 50
+    path: algorithms/random_search
+    seed: 10
+    args:
+      lanelet2: /autoware_scenario_runner/algorithms/resources/Town01.osm

@@ -1,0 +1,81 @@
+{
+    "routes": [
+        {
+            "route": {
+                "id": 0,
+                "weathers": [
+                    {
+                        "weather": {
+                            "route_percentage": 0.0,
+                            "precipitation": 100.0,
+                            "cloudiness": 0.0,
+                            "precipitation_deposits": 100.0,
+                            "wetness": 100.0,
+                            "wind_intensity": 100.0,
+                            "sun_azimuth_angle": -1.0,
+                            "sun_altitude_angle": 90.0,
+                            "fog_density": 2.0
+                        }
+                    },
+                    {
+                        "weather": {
+                            "route_percentage": 100.0,
+                            "precipitation": 0.0,
+                            "cloudiness": 0.0,
+                            "precipitation_deposits": 0.0,
+                            "wetness": 0.0,
+                            "wind_intensity": 0.0,
+                            "sun_azimuth_angle": -1.0,
+                            "sun_altitude_angle": 90.0,
+                            "fog_density": 2.0
+                        }
+                    }
+                ],
+                "waypoints": [
+                    {
+                        "position": {
+                            "x": 88.4,
+                            "y": 82.2,
+                            "z": 0.0
+                        }
+                    },
+                    {
+                        "position": {
+                            "x": 230.0,
+                            "y": 133.5,
+                            "z": 0.0
+                        }
+                    }
+                ],
+                "scenarios": [
+                    {
+                        "scenario": {
+                            "name": "PedestrianCrossing_1",
+                            "type": "PedestrianCrossing",
+                            "trigger_point": {
+                                "x": 160.0,
+                                "y": 133.5,
+                                "z": 0.0
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "scenarios": [
+        {
+            "scenario": {
+                "town": "Town01",
+                "ego_vehicle": {
+                    "x": 312,
+                    "y": 129,
+                    "z": 0,
+                    "yaw": 180,
+                    "model": "vehicle.toyota.prius",
+                    "name": "ego_vehicle"
+                }
+            }
+        }
+    ]
+}

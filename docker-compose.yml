@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  autoware-runner:
+    image: ghcr.io/intelligent-testing-lab/autoware-scenario-runner:latest
+    command: bash    
+    stdin_open: true
+    tty: true    
+    network_mode: host
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    
+    environment:
+      - DISPLAY=${DISPLAY}
+      - CAWSR_CONFIG=configs/example_algorithm.json # relative path
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - ./algorithms:/autoware_scenario_runner/algorithms
+      - ./configs:/autoware_scenario_runner/configs
+      - ./scenarios:/autoware_scenario_runner/scenarios
+      - ./results:/autoware_scenario_runner/results
+  
+  autoware-latest: # dont launch when running distributed
+    image: ghcr.io/intelligent-testing-lab/autoware:latest
+    
+    stdin_open: true
+    tty: true
+    
+    container_name: autoware-latest    
+    network_mode: host
+    
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    
+    environment:
+      - DISPLAY=${DISPLAY}
+      - CARLA_HOST=127.0.0.1
+      
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/localtime:/etc/localtime:ro
