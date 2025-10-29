@@ -1,8 +1,9 @@
 version: '3.7'
 services:
-  autoware-runner:
+  cawsr:
     image: ghcr.io/intelligent-testing-lab/autoware-scenario-runner:latest
-    command: bash    
+    command: python3 /autoware_scenario_runner/aw_scenario_runner.py
+    
     stdin_open: true
     tty: true    
     network_mode: host
@@ -26,9 +27,13 @@ services:
       - ./configs:/autoware_scenario_runner/configs
       - ./scenarios:/autoware_scenario_runner/scenarios
       - ./results:/autoware_scenario_runner/results
-  
+        
+    depends_on: 
+      - autoware-latest
+
   autoware-latest: # dont launch when running distributed
     image: ghcr.io/intelligent-testing-lab/autoware:latest
+    command: source /workspace/install/setup.bash && ros2 launch autoware_manager autoware_manager.launch.xml  
     
     stdin_open: true
     tty: true
