@@ -13,14 +13,14 @@ cawsr:
 
   initialisation_budget: 500 # ticks
   agent: srunner/autoagents/autoware_agent
-  mode: 'algorithm' # benchmark or algorithm
+  mode: 'benchmark' # benchmark or algorithm
 
   benchmark:
     scenarios: scenarios/examples # directory
     random_sampling: true # pick random scenario or ordered
 
   algorithm:
-    initial_definition: scenarios/examples/example_scenario.json # can be null
+    initial_definition: scenarios/examples/example_scenario.json
     seed: 10
     runs: 50
     path: algorithms/random_search

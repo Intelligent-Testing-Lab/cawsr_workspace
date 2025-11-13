@@ -30,6 +30,7 @@ services:
         
     depends_on: 
       - autoware-latest
+      - carla
 
   autoware-latest: # dont launch when running distributed
     image: ghcr.io/intelligent-testing-lab/autoware:latest
@@ -56,3 +57,40 @@ services:
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /etc/localtime:/etc/localtime:ro
+    
+    depends_on:
+      - carla
+
+  carla:
+    image: carlasim/carla:0.9.15
+    command: /bin/bash -c "./CarlaUE4.sh -carla-rpc-port=2000 -quality-level=Epic"
+    
+    stdin_open: true
+    tty: true
+
+    container_name: carla_simulator
+    network_mode: host
+    
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+
+    environment:
+      - DISPLAY=${DISPLAY}
+      - NVIDIA_DRIVER_CAPABILITIES=all
+      - XDG_RUNTIME_DIR=/tmp
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+
+    healthcheck:
+      test: ["CMD-SHELL", "pgrep -f CarlaUE4.sh"]
+      interval: 30s    
+      timeout: 10s     
+      retries: 3       
+      start_period: 90s
