@@ -17,7 +17,7 @@ services:
     
     environment:
       - DISPLAY=${DISPLAY}
-      - CAWSR_CONFIG=configs/example_algorithm.json # relative path
+      - CAWSR_CONFIG=configs/example_algorithm.yaml
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
