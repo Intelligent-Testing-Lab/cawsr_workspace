@@ -2,7 +2,7 @@ version: '3.7'
 services:
   cawsr:
     image: ghcr.io/intelligent-testing-lab/autoware-scenario-runner:latest
-    command: python3 /autoware_scenario_runner/aw_scenario_runner.py
+    command: /bin/bash -c "rossrc && python3 /autoware_scenario_runner/aw_scenario_runner.py"
 
     stdin_open: true
     tty: true    
@@ -34,7 +34,8 @@ services:
 
   autoware-latest: # dont launch when running distributed
     image: ghcr.io/intelligent-testing-lab/autoware:latest
-    command: ros2 launch autoware_manager autoware_manager.launch.xml  
+    entrypoint: bash
+    command: -c "source /opt/ros/humble/setup.bash && source /workspace/install/setup.bash && ros2 launch autoware_manager autoware_manager.launch.xml"  
     
     stdin_open: true
     tty: true
