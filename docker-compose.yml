@@ -28,10 +28,6 @@ services:
       - ./scenarios:/autoware_scenario_runner/scenarios
       - ./results:/autoware_scenario_runner/results
         
-    depends_on: 
-      - autoware-latest
-      - carla
-
   autoware-latest: # dont launch when running distributed
     image: ghcr.io/intelligent-testing-lab/autoware:latest
     entrypoint: bash
@@ -59,8 +55,6 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - /etc/localtime:/etc/localtime:ro
     
-    depends_on:
-      - carla
 
   carla:
     image: carlasim/carla:0.9.15
