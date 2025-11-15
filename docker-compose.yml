@@ -7,6 +7,8 @@ services:
     stdin_open: true
     tty: true    
     network_mode: host
+    ipc: host
+    
     deploy:
       resources:
         reservations:
@@ -38,6 +40,7 @@ services:
     
     container_name: autoware-latest    
     network_mode: host
+    ipc: host
     
     deploy:
       resources:
