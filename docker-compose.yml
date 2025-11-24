@@ -8,6 +8,8 @@ services:
     tty: true    
     network_mode: host
     ipc: host
+    pid: host
+
     
     deploy:
       resources:
@@ -41,6 +43,7 @@ services:
     container_name: autoware-latest    
     network_mode: host
     ipc: host
+    pid: host
     
     deploy:
       resources:
