@@ -70,7 +70,9 @@ services:
 
   carla:
     image: carlasim/carla:0.9.15
-    command: /bin/bash -c "./CarlaUE4.sh -carla-rpc-port=2000 -quality-level=Low"
+    entrypoint: bash
+    command: -c "./CarlaUE4.sh -carla-rpc-port=2000 -quality-level=Low -RenderOffScreen"
+
     
     stdin_open: true
     tty: true
