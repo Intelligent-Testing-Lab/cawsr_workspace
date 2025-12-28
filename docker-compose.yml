@@ -25,6 +25,7 @@ services:
       - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
       - CYCLONEDDS_URI=file:///cyclonedds/cyclonedds_${MODE}.xml
+      - AUTOWARE_IP=${AUTOWARE_IP}
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -62,6 +63,7 @@ services:
       - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
       - CYCLONEDDS_URI=file:///cyclonedds/cyclonedds_${MODE}.xml
+      - HOST_IP=${HOST_IP}
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
