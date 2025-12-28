@@ -10,7 +10,6 @@ services:
     network_mode: host
     ipc: host
     pid: host
-
     
     deploy:
       resources:
@@ -22,10 +21,10 @@ services:
     
     environment:
       - DISPLAY=${DISPLAY}
-      - CAWSR_CONFIG=configs/example_algorithm.yaml
-      - ROS_DOMAIN_ID=0
+      - CAWSR_CONFIG=${CAWSR_CONFIG}
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-      - CYCLONEDDS_URI=file:///cyclonedds/cyclonedds_local.xml # or cyclonedds_dist.xml
+      - CYCLONEDDS_URI=file:///cyclonedds/cyclonedds_${MODE}.xml
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -60,9 +59,9 @@ services:
     environment:
       - DISPLAY=${DISPLAY}
       - CARLA_HOST=127.0.0.1
-      - ROS_DOMAIN_ID=0
+      - ROS_DOMAIN_ID=${ROS_DOMAIN_ID}
       - RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
-      - CYCLONEDDS_URI=file:///cyclonedds/cyclonedds_local.xml # or cyclonedds_dist.xml
+      - CYCLONEDDS_URI=file:///cyclonedds/cyclonedds_${MODE}.xml
 
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
