@@ -10,7 +10,7 @@ import lanelet2.io
 import lanelet2.geometry
 import lanelet2.core
 from srunner.tools import route_manipulation
-from srunner.tools.carla_data_provider import CarlaDataProvider
+from srunner.scenariomanager.carla_data_provider import CarlaDataProvider
 
 HOST = 'localhost'
 PORT = 2000
