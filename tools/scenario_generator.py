@@ -275,9 +275,8 @@ class CARLAScenarioGenerator:
     
     def initialize_carla_world(self, town):
         """Initialize CARLA client connection."""
-        self.client.load_world(town)
-        CarlaDataProvider.set_client(self.client)
         self.world = self.client.get_world()
+        self.client.load_world(town)
         CarlaDataProvider.set_world(self.world)
         
     def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=20.0):
@@ -315,8 +314,9 @@ class CARLAScenarioGenerator:
             weather_start = combination[1]
             weather_end = combination[2]
             event_type = combination[3]
-             
+            
             self.initialize_carla_world(town_map)
+            time.sleep(2)
                         
             print(f"Generating scenario {route_id}: Map={town_map}, "
                   f"Weather={weather_start}->{weather_end}, Event={event_type}")
