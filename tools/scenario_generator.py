@@ -321,13 +321,14 @@ class CARLAScenarioGenerator:
             event_type = combination[3]
              
             self.initialize_carla_world(town_map)
-            
-            
+                        
             print(f"Generating scenario {route_id}: Map={town_map}, "
                   f"Weather={weather_start}->{weather_end}, Event={event_type}")
             
             # Generate valid route for this map
-            waypoints = self.generate_valid_route(town_map)
+            #waypoints = self.generate_valid_route(town_map)
+            waypoints = [0.0, 0.0], [100.0, 0.0] # debug
+            
             
             # Pick trigger point along the route
             trigger_point = self.pick_trigger_point_on_route(waypoints[0], waypoints[1])
