@@ -10,7 +10,10 @@ import lanelet2.io
 import lanelet2.geometry
 import lanelet2.core
 from srunner.tools import route_manipulation
+from srunner.tools.carla_data_provider import CarlaDataProvider
 
+HOST = 'localhost'
+PORT = 2000
 
 class CARLAScenarioGenerator:
     def __init__(self, lanelet2_map_key: dict) -> None:
@@ -272,9 +275,25 @@ class CARLAScenarioGenerator:
         }
         
         return scenario_def
-
+    
+    def initialize_carla_world(self, town):
+        """Initialize CARLA client connection."""
+        self.client.load_world(town)
+        CarlaDataProvider.set_client(self.client)
+        self.world = self.client.get_world()
+        CarlaDataProvider.set_world(self.world)
+        
+    def initialise_carla_client(self, host='localhost', port=2000, timeout=20.0):
+        """Initialise CARLA client connection."""
+        self.client = carla.Client(host, port)
+        self.client.set_timeout(timeout)
+        
+        CarlaDataProvider.set_client(self.client)
+        self.world = self.client.get_world()
+        
     def generate_pairwise_scenarios(self, output_path="scenarios/examples/"):
         """Generate all pairwise test scenarios and save to file."""
+        
         # Define parameters for pairwise testing
         parameters = OrderedDict({
             "map": self.map_options,
@@ -282,6 +301,12 @@ class CARLAScenarioGenerator:
             "weather_at_finish": list(self.weather_options.keys()),
             "event_at_last_waypoint": self.event_options,
         })
+        
+        # initialise carla
+        self.initialise_carla_client(
+            host=HOST,
+            port=PORT
+        )
         
         # Generate pairwise combinations
         all_scenarios = []
@@ -292,6 +317,9 @@ class CARLAScenarioGenerator:
             weather_start = combination[1]
             weather_end = combination[2]
             event_type = combination[3]
+             
+            self.initialize_carla_world(town_map)
+            
             
             print(f"Generating scenario {route_id}: Map={town_map}, "
                   f"Weather={weather_start}->{weather_end}, Event={event_type}")
