@@ -188,8 +188,8 @@ class CARLAScenarioGenerator:
             if not self._dist(p1, p2) >= min_distance or not self._not_same_lane_check(p1, p2):
                 continue
             
-            #if self.valid_route([p1, p2]):
-            #    return [p1, p2]
+            if self.valid_route([p1, p2]):
+                return [p1, p2]
         
     def valid_route(self, route) -> bool:
         carla_route = list(map(self._to_carla, route))
