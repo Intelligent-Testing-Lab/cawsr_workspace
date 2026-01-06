@@ -9,7 +9,8 @@ This script builds the all the example scenarios in `scenarios/examples`. It use
 
 To run the generate script, change the docker compose service command to 
 ```bash
-command: -c "source /ros_workspace/autoware_msgs/install/setup.bash && source /opt/ros/humble/setup.bash && python3 /autoware_scenario_runner/scenario_generator.py" 
+command: -c "source /ros_workspace/autoware_msgs/install/setup.bash && source /opt/ros/humble/setup.bash && python3 /autoware_scenario_runner/tools/scenario_generator.py" 
+" 
 ```
 Then, run the CAWSR and carla services
 ```bash
