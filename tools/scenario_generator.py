@@ -287,9 +287,8 @@ class CARLAScenarioGenerator:
         """Initialise CARLA client connection."""
         self.client = carla.Client(host, port)
         self.client.set_timeout(timeout)
-        
         CarlaDataProvider.set_client(self.client)
-        self.world = self.client.get_world()
+
         
     def generate_pairwise_scenarios(self, output_path="scenarios/examples/"):
         """Generate all pairwise test scenarios and save to file."""
