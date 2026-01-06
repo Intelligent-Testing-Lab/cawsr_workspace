@@ -12,7 +12,7 @@ import lanelet2.core
 from srunner.tools import route_manipulation
 from srunner.scenariomanager.carla_data_provider import CarlaDataProvider
 
-HOST = 'localhost'
+HOST = '127.0.0.1'
 PORT = 2000
 
 class CARLAScenarioGenerator:
@@ -283,7 +283,7 @@ class CARLAScenarioGenerator:
         self.world = self.client.get_world()
         CarlaDataProvider.set_world(self.world)
         
-    def initialise_carla_client(self, host='localhost', port=2000, timeout=60.0):
+    def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=60.0):
         """Initialise CARLA client connection."""
         self.client = carla.Client(host, port)
         self.client.set_timeout(timeout)
