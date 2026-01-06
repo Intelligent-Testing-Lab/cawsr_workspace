@@ -3,6 +3,18 @@
 
 This directory contains various quality of life tools.
 
+## Example scenario generator
+
+This script builds the all the example scenarios in `scenarios/examples`. It uses PairWise sampling to cover possible combinations of weather, towns and scenario events. 
+
+To run the generate script, change the docker compose service command to 
+```bash
+command: -c "source /ros_workspace/autoware_msgs/install/setup.bash && source /opt/ros/humble/setup.bash && python3 /autoware_scenario_runner/scenario_generator.py" 
+```
+Then, run the CAWSR and carla services
+```bash
+docker compose up carla cawsr
+```
 
 ## Generate Replay Video
 
