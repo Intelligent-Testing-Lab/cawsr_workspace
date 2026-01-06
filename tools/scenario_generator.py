@@ -11,6 +11,8 @@ import lanelet2.geometry
 import lanelet2.core
 from srunner.tools import route_manipulation
 from srunner.scenariomanager.carla_data_provider import CarlaDataProvider
+from agents.navigation.global_route_planner import GlobalRoutePlanner
+
 import time
 
 HOST = '127.0.0.1'
@@ -27,6 +29,8 @@ class CARLAScenarioGenerator:
         """
         self.lanelet2 = lanelet2_map_key
         self.laneletmap_ = None
+        self._map = None
+        self._route_planner = None
 
         # weather options   
         self.weather_options = {
@@ -194,7 +198,7 @@ class CARLAScenarioGenerator:
     def valid_route(self, route) -> bool:
         carla_route = list(map(self._to_carla, route))
 
-        gps_route, route = route_manipulation.interpolate_trajectory(carla_route)
+        gps_route, route = route_manipulation.interpolate_trajectory(carla_route, grp=self._route_planner)
         return not ((len(gps_route) == 1) and (len(route) == 1))
 
     def pick_trigger_point_on_route(self, waypoint_start, waypoint_end):
@@ -279,6 +283,10 @@ class CARLAScenarioGenerator:
         self.client.load_world(town)
         CarlaDataProvider.set_world(self.world)
         
+        if self._map != town or self._route_planner is None:
+            self._map = town
+            self._route_planner = GlobalRoutePlanner(self.world.get_map(), 1.0)
+        
     def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=20.0):
         """Initialise CARLA client connection."""
         self.client = carla.Client(host, port)
@@ -291,7 +299,7 @@ class CARLAScenarioGenerator:
         
         # Define parameters for pairwise testing
         parameters = OrderedDict({
-            "map": self.map_options,
+            "map": sorted(self.map_options),
             "weather_at_start": list(self.weather_options.keys()),
             "weather_at_finish": list(self.weather_options.keys()),
             "event_at_last_waypoint": self.event_options,
@@ -314,6 +322,7 @@ class CARLAScenarioGenerator:
             weather_start = combination[1]
             weather_end = combination[2]
             event_type = combination[3]
+            
             
             self.initialize_carla_world(town_map)
             time.sleep(2)
