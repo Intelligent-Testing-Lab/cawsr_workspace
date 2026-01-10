@@ -286,6 +286,7 @@ class CARLAScenarioGenerator:
             del self._route_planner
             self._route_planner = None
             CarlaDataProvider.cleanup()
+            CarlaDataProvider.set_world(None)
 
             # force garbage collection to free memory
             gc.collect()
