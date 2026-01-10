@@ -285,24 +285,19 @@ class CARLAScenarioGenerator:
             
             del self._route_planner
             self._route_planner = None
-            CarlaDataProvider.cleanup()
-            CarlaDataProvider.set_world(None)
-
-            # force garbage collection to free memory
-            gc.collect()
-            time.sleep(2)
-            
+            CarlaDataProvider.cleanup()            
             print("Loading CARLA world:", town)
             self.client.load_world(town)
             world = self.client.get_world()
             world.wait_for_tick()
+            
             print("Settings CARLA world:", town)
             CarlaDataProvider.set_world(world)
             self._map = town
             
             print("Generating new planner for CARLA world:", town)
-            self._route_planner = GlobalRoutePlanner(CarlaDataProvider.get_map(), 1.0)
-        
+            self._route_planner = CarlaDataProvider._grp
+
     def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=20.0):
         """Initialise CARLA client connection."""
         self.client = carla.Client(host, port)
