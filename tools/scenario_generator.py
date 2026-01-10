@@ -1,6 +1,7 @@
 import json
 import os
 import numpy as np
+import gc
 import random
 import carla
 from allpairspy import AllPairs
@@ -285,7 +286,11 @@ class CARLAScenarioGenerator:
             del self._route_planner
             self._route_planner = None
             CarlaDataProvider.cleanup()
-                        
+
+            # force garbage collection to free memory
+            gc.collect()
+            time.sleep(2)
+            
             print("Loading CARLA world:", town)
             self.client.load_world(town)
             CarlaDataProvider.set_world(self.client.get_world())
