@@ -285,7 +285,7 @@ class CARLAScenarioGenerator:
         
         if self._map != town or self._route_planner is None:
             self._map = town
-            self._route_planner = GlobalRoutePlanner(self.world.get_map(), 1.0)
+            self._route_planner = GlobalRoutePlanner(CarlaDataProvider.get_map(), 1.0)
         
     def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=20.0):
         """Initialise CARLA client connection."""
