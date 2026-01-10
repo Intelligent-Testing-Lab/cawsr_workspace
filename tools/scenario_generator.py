@@ -293,6 +293,7 @@ class CARLAScenarioGenerator:
             
             print("Loading CARLA world:", town)
             self.client.load_world(town)
+            print("Settings CARLA world:", town)
             CarlaDataProvider.set_world(self.client.get_world())
             self._map = town
             
