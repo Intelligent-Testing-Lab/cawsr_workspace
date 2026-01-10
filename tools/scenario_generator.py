@@ -286,6 +286,8 @@ class CARLAScenarioGenerator:
             self.client.load_world(town)
             CarlaDataProvider.set_world(self.world)
             self._map = town
+            
+            del self._route_planner
             self._route_planner = GlobalRoutePlanner(CarlaDataProvider.get_map(), 1.0)
         
     def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=20.0):
