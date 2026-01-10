@@ -287,7 +287,7 @@ class CARLAScenarioGenerator:
             self.client.load_world(town)
             world = self.client.get_world()
             world.wait_for_tick()
-            map_ =  world.get_map()
+            time.sleep(10)
             
             print("Setting CARLA world:", town)
             CarlaDataProvider.set_world(world)
