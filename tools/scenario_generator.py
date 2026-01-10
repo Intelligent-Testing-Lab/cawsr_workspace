@@ -347,6 +347,9 @@ class CARLAScenarioGenerator:
 
             with open(os.path.join(output_path, f'{town_map}_{event_type}_{weather_start}.json'), 'w') as f:
                 json.dump(scenario, f, indent=2)
+            
+            print(f"Saving scenario {route_id}: Map={town_map}, "
+                  f"Weather={weather_start}->{weather_end}, Event={event_type}")
              
         print(f"\nGenerated {len(all_scenarios)} pairwise scenarios")
         print(f"Saved to {output_path}")
