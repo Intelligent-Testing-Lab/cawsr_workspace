@@ -318,7 +318,10 @@ class CARLAScenarioGenerator:
         all_scenarios = []
         route_id = 0
         
-        for combination in AllPairs(parameters):
+        # sort combinations by town to avoid reloading map too often
+        all_pairs = sorted(AllPairs(parameters), key=lambda x: x[0])
+
+        for combination in all_pairs:
             town_map = combination[0]
             weather_start = combination[1]
             weather_end = combination[2]
