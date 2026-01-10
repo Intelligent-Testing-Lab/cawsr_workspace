@@ -287,6 +287,7 @@ class CARLAScenarioGenerator:
             CarlaDataProvider.set_world(self.client.get_world())
             self._map = town
             
+            print("Generating new planner for CARLA world:", town)
             del self._route_planner
             time.sleep(2)
             self._route_planner = GlobalRoutePlanner(CarlaDataProvider.get_map(), 1.0)
@@ -329,7 +330,6 @@ class CARLAScenarioGenerator:
             weather_start = combination[1]
             weather_end = combination[2]
             event_type = combination[3]
-            
             
             self.initialize_carla_world(town_map)
                         
