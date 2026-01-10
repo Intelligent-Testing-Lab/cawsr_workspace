@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 27,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": 183.85557322658815,
+              "y": -303.67100106924374,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 193.5075018459462,
+              "y": -240.72685823591235,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "FollowLeadingVehicleWithObstacle_27",
+              "type": "FollowLeadingVehicleWithObstacle",
+              "trigger_point": {
+                "x": 189.05356161069042,
+                "y": -269.77280971309057,
+                "z": 0.0,
+                "yaw": 81.28210424198375
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town02",
+        "ego_vehicle": {
+          "x": 183.85557322658815,
+          "y": -303.67100106924374,
+          "z": 0,
+          "yaw": 81.28210424198375,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 50,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": -344.3291931776207,
+              "y": 69.96806145045736,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 331.7141172679336,
+              "y": -136.65015354906345,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "ControlLoss_50",
+              "type": "ControlLoss",
+              "trigger_point": {
+                "x": -138.84961122223223,
+                "y": 7.167610966761117,
+                "z": 0.0,
+                "yaw": -16.99465442464152
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town04",
+        "ego_vehicle": {
+          "x": -344.3291931776207,
+          "y": 69.96806145045736,
+          "z": 0,
+          "yaw": -16.99465442464152,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

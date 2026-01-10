@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 71,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": 14.276851041859384,
+              "y": -137.55091413228723,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 141.91736326178085,
+              "y": -17.56830511357172,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "OppositeVehicleRunningRedLight_71",
+              "type": "OppositeVehicleRunningRedLight",
+              "trigger_point": {
+                "x": 58.28587947599274,
+                "y": -96.18224551704148,
+                "z": 0.0,
+                "yaw": 43.22865597676558
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town06",
+        "ego_vehicle": {
+          "x": 14.276851041859384,
+          "y": -137.55091413228723,
+          "z": 0,
+          "yaw": 43.22865597676558,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

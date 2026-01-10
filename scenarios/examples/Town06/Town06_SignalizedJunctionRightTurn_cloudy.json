@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 73,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 0.0,
+              "cloudiness": 100.0,
+              "precipitation_deposits": 0.0,
+              "wetness": 0.0,
+              "wind_intensity": 0.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 0.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 0.0,
+              "wetness": 0.0,
+              "wind_intensity": 0.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": 12.612377525230384,
+              "y": -353.9947797664758,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 661.1748330455607,
+              "y": -121.00631640947162,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "SignalizedJunctionRightTurn_73",
+              "type": "SignalizedJunctionRightTurn",
+              "trigger_point": {
+                "x": 393.5552486844092,
+                "y": -217.14551656486867,
+                "z": 0.0,
+                "yaw": 19.760231061498764
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town06",
+        "ego_vehicle": {
+          "x": 12.612377525230384,
+          "y": -353.9947797664758,
+          "z": 0,
+          "yaw": 19.760231061498764,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

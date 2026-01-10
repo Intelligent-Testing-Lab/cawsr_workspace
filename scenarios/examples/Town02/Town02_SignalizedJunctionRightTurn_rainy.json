@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 21,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": 40.992896537537334,
+              "y": -195.1977575438537,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 189.50961261541835,
+              "y": -232.62641161969276,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "SignalizedJunctionRightTurn_21",
+              "type": "SignalizedJunctionRightTurn",
+              "trigger_point": {
+                "x": 111.04835677387096,
+                "y": -212.85288523961037,
+                "z": 0.0,
+                "yaw": -14.14492918758075
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town02",
+        "ego_vehicle": {
+          "x": 40.992896537537334,
+          "y": -195.1977575438537,
+          "z": 0,
+          "yaw": -14.14492918758075,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

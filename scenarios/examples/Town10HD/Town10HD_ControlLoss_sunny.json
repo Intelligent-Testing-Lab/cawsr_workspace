@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 100,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 0.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 0.0,
+              "wetness": 0.0,
+              "wind_intensity": 0.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": -48.75776643361932,
+              "y": -0.3172593867555614,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": -110.5891543060757,
+              "y": -40.944606640701274,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "ControlLoss_100",
+              "type": "ControlLoss",
+              "trigger_point": {
+                "x": -96.1221565089702,
+                "y": -31.43882384252967,
+                "z": 0.0,
+                "yaw": -146.69241593352845
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town10HD",
+        "ego_vehicle": {
+          "x": -48.75776643361932,
+          "y": -0.3172593867555614,
+          "z": 0,
+          "yaw": -146.69241593352845,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

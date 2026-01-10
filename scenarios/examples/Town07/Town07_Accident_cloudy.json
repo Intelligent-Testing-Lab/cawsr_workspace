@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 88,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 0.0,
+              "cloudiness": 100.0,
+              "precipitation_deposits": 0.0,
+              "wetness": 0.0,
+              "wind_intensity": 0.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 0.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 0.0,
+              "wetness": 0.0,
+              "wind_intensity": 0.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": -102.89931345273797,
+              "y": -39.45259546016217,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 77.06167057799883,
+              "y": 28.47950597336282,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "Accident_88",
+              "type": "Accident",
+              "trigger_point": {
+                "x": 4.1699664919681965,
+                "y": 0.9641716785192926,
+                "z": 0.0,
+                "yaw": 20.680638287760388
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town07",
+        "ego_vehicle": {
+          "x": -102.89931345273797,
+          "y": -39.45259546016217,
+          "z": 0,
+          "yaw": 20.680638287760388,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

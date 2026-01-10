@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 29,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 0.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 0.0,
+              "wetness": 0.0,
+              "wind_intensity": 0.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": 232.6393808437023,
+              "y": 8.157192835805697,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": 241.21913022151045,
+              "y": -148.4201297356011,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "StationaryObjectCrossing_29",
+              "type": "StationaryObjectCrossing",
+              "trigger_point": {
+                "x": 238.67528870414947,
+                "y": -101.99594223373707,
+                "z": 0.0,
+                "yaw": -86.86357958893248
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town03",
+        "ego_vehicle": {
+          "x": 232.6393808437023,
+          "y": 8.157192835805697,
+          "z": 0,
+          "yaw": -86.86357958893248,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}

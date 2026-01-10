@@ -1,0 +1,82 @@
+{
+  "routes": [
+    {
+      "route": {
+        "id": 111,
+        "weathers": [
+          {
+            "weather": {
+              "route_percentage": 0.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          },
+          {
+            "weather": {
+              "route_percentage": 100.0,
+              "precipitation": 100.0,
+              "cloudiness": 0.0,
+              "precipitation_deposits": 100.0,
+              "wetness": 100.0,
+              "wind_intensity": 100.0,
+              "sun_azimuth_angle": -1.0,
+              "sun_altitude_angle": 90.0,
+              "fog_density": 2.0
+            }
+          }
+        ],
+        "waypoints": [
+          {
+            "position": {
+              "x": -60.05965269919818,
+              "y": 61.97511120370136,
+              "z": 0.0
+            }
+          },
+          {
+            "position": {
+              "x": -6.709801400610517,
+              "y": -24.80725374691101,
+              "z": 0.0
+            }
+          }
+        ],
+        "scenarios": [
+          {
+            "scenario": {
+              "name": "FollowLeadingVehicleWithObstacle_111",
+              "type": "FollowLeadingVehicleWithObstacle",
+              "trigger_point": {
+                "x": -45.939788733996274,
+                "y": 39.006814988157984,
+                "z": 0.0,
+                "yaw": -58.41869045825554
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": {
+        "town": "Town10HD",
+        "ego_vehicle": {
+          "x": -60.05965269919818,
+          "y": 61.97511120370136,
+          "z": 0,
+          "yaw": -58.41869045825554,
+          "model": "vehicle.toyota.prius",
+          "name": "ego_vehicle"
+        }
+      }
+    }
+  ]
+}
