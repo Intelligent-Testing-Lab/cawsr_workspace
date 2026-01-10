@@ -282,9 +282,6 @@ class CARLAScenarioGenerator:
         """Initialize CARLA client connection."""
         # only initialise new map if different from current
         if self._map != town or self._route_planner is None:
-            
-            del self._route_planner
-            self._route_planner = None
             CarlaDataProvider.cleanup()            
             print("Loading CARLA world:", town)
             self.client.load_world(town)
@@ -296,7 +293,7 @@ class CARLAScenarioGenerator:
             self._map = town
             
             print("Generating new planner for CARLA world:", town)
-            self._route_planner = CarlaDataProvider._grp
+            self._route_planner = CarlaDataProvider.get_global_route_planner()
 
     def initialise_carla_client(self, host='127.0.0.1', port=2000, timeout=20.0):
         """Initialise CARLA client connection."""
