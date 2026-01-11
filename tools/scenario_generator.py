@@ -180,15 +180,36 @@ class CARLAScenarioGenerator:
         """
         return np.linalg.norm(p1 - p2)
 
+    def _to_np(self, point: carla.Location) -> np.ndarray:
+        """Convert CARLA location to numpy array.
+
+        Args:
+            point (carla.Location): CARLA location
+
+        Returns:
+            np.ndarray: Numpy array representation
+        """
+        return np.array([point.x, point.y, point.z])
+
+    def _get_spawn_points(self, town):
+        """Get spawn points from CARLA map."""
+        carla_map = CarlaDataProvider.get_map()
+        return carla_map.get_spawn_points()
+
     def generate_valid_route(self, town, min_distance=50.0, max_attempts=100):
         """Generate a valid route with start and end waypoints."""
         all_points = self._get_all_lanelet_points(town)
-        
+        spawn_points = [self._to_np(spawn.location) for spawn in self._get_spawn_points(town)]
+
+
         for _ in range(max_attempts):
-            # Randomly select two points
-            idx1, idx2 = random.sample(range(len(all_points)), 2)
-            p1, p2 = all_points[idx1], all_points[idx2]
-            
+            # randomly select a spawn point and lanelet
+            spawn = random.sample(range(len(spawn_points)), 1)
+            print(spawn)
+            finish = random.sample(range(len(all_points)), 1)
+
+            p1, p2 = spawn_points[spawn[0]], all_points[finish[0]]
+            print(f"Trying route from {p1} to {p2}")
             # Check if points are far enough and not in the same lane
             if not self._dist(p1, p2) >= min_distance or not self._not_same_lane_check(p1, p2):
                 continue
