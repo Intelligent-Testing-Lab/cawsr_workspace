@@ -100,7 +100,7 @@ class CARLAScenarioGenerator:
             "Town10HD",
         ]
 
-    def _np_to_json(self, p1: np.ndarray) -> dict:
+    def _np_to_json(self, p1: np.ndarray, is_spawn=False) -> dict:
         """Convert numpy array to JSON 
 
         Args:
@@ -109,7 +109,7 @@ class CARLAScenarioGenerator:
         Returns:
             dict: JSON format compatible with CAWSR
         """
-        return {"position": {"x": float(p1[0]), "y": float(p1[1]), "z": 0.0}}
+        return {"position": {"x": float(p1[0]), "y": float(p1[1]), "z": 0.0 if not is_spawn else 0.299}}
 
     def _get_all_lanelet_points(self, town: str) -> np.ndarray:
         """Extract all centerline points from lanelet2 map
@@ -167,7 +167,7 @@ class CARLAScenarioGenerator:
             carla.Location: CARLA compatible position_
         """
         # slightly above ground for spawn points
-        return carla.Location(point[0], point[1], 0.0 if not is_spawn else 0.2999)
+        return carla.Location(point[0], point[1], 0.0 if not is_spawn else 0.299)
 
     def _dist(self, p1: np.ndarray, p2: np.ndarray) -> np.floating:
         """ Euclidean distance between points
@@ -182,14 +182,7 @@ class CARLAScenarioGenerator:
         return np.linalg.norm(p1 - p2)
 
     def _to_np(self, point: carla.Location) -> np.ndarray:
-        """Convert CARLA location to numpy array.
-
-        Args:
-            point (carla.Location): CARLA location
-
-        Returns:
-            np.ndarray: Numpy array representation
-        """
+        """Convert carla.Location to numpy array."""
         return np.array([point.x, point.y])
 
     def _get_spawn_points(self, town):
@@ -238,7 +231,10 @@ class CARLAScenarioGenerator:
         trigger_idx = random.randint(start_idx, end_idx - 1)
         trigger_point = route[trigger_idx]
         
-        return self._np_to_json(trigger_point)
+        
+        obj = self._np_to_json(self._to_np(trigger_point.location), is_spawn=True)
+        obj['yaw'] = float(trigger_point.rotation.yaw)
+        return obj
 
     def create_scenario_definition(self, town_map, weather_start, weather_end,  
                                    event_type, route_id, waypoints, trigger_point):
