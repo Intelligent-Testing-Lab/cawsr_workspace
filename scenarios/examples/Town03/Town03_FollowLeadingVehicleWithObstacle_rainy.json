@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": {
-        "id": 41,
+        "id": 0,
         "weathers": [
           {
             "weather": {
@@ -34,15 +34,15 @@
         "waypoints": [
           {
             "position": {
-              "x": -10.352742143439501,
-              "y": -35.9902175455823,
+              "x": -42.350990295410156,
+              "y": -2.835118293762207,
               "z": 0.0
             }
           },
           {
             "position": {
-              "x": 33.41954994055923,
-              "y": -7.123602497036162,
+              "x": -74.57296473104083,
+              "y": -144.69491704037836,
               "z": 0.0
             }
           }
@@ -50,13 +50,15 @@
         "scenarios": [
           {
             "scenario": {
-              "name": "FollowLeadingVehicleWithObstacle_41",
+              "name": "FollowLeadingVehicleWithObstacle_0",
               "type": "FollowLeadingVehicleWithObstacle",
               "trigger_point": {
-                "x": 14.04921122969301,
-                "y": -19.897804721893607,
-                "z": 0.0,
-                "yaw": 33.403746035963316
+                "position": {
+                  "x": -74.50250244140625,
+                  "y": -50.437408447265625,
+                  "z": 0.299
+                },
+                "yaw": 269.84375
               }
             }
           }
@@ -69,10 +71,10 @@
       "scenario": {
         "town": "Town03",
         "ego_vehicle": {
-          "x": -10.352742143439501,
-          "y": -35.9902175455823,
+          "x": -42.350990295410156,
+          "y": -2.835118293762207,
           "z": 0,
-          "yaw": 33.403746035963316,
+          "yaw": -102.79701151660186,
           "model": "vehicle.toyota.prius",
           "name": "ego_vehicle"
         }

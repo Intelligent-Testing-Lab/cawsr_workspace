@@ -2,7 +2,7 @@
   "routes": [
     {
       "route": {
-        "id": 110,
+        "id": 0,
         "weathers": [
           {
             "weather": {
@@ -34,15 +34,15 @@
         "waypoints": [
           {
             "position": {
-              "x": 48.09061170326491,
-              "y": -70.21173526802448,
+              "x": 14.130091667175293,
+              "y": 69.71400451660156,
               "z": 0.0
             }
           },
           {
             "position": {
-              "x": -110.05477936607844,
-              "y": 7.046858553635642,
+              "x": -68.02784839567441,
+              "y": 58.538336856626174,
               "z": 0.0
             }
           }
@@ -50,13 +50,15 @@
         "scenarios": [
           {
             "scenario": {
-              "name": "OppositeVehicleRunningRedLight_110",
+              "name": "OppositeVehicleRunningRedLight_0",
               "type": "OppositeVehicleRunningRedLight",
               "trigger_point": {
-                "x": 7.70258839615974,
-                "y": -50.481018698641904,
-                "z": 0.0,
-                "yaw": 153.963154092788
+                "position": {
+                  "x": 94.71543884277344,
+                  "y": 110.06311798095703,
+                  "z": 0.299
+                },
+                "yaw": 114.8585205078125
               }
             }
           }
@@ -69,10 +71,10 @@
       "scenario": {
         "town": "Town10HD",
         "ego_vehicle": {
-          "x": 48.09061170326491,
-          "y": -70.21173526802448,
+          "x": 14.130091667175293,
+          "y": 69.71400451660156,
           "z": 0,
-          "yaw": 153.963154092788,
+          "yaw": -172.25379141807758,
           "model": "vehicle.toyota.prius",
           "name": "ego_vehicle"
         }
