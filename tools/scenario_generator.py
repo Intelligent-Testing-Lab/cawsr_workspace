@@ -340,6 +340,11 @@ class CARLAScenarioGenerator:
         all_scenarios = []
         route_id = 0
         
+        # create all folders for towns
+        for town in self.map_options:
+            town_path = os.path.join(output_path, town)
+            os.makedirs(town_path, exist_ok=True)
+        
         # sort combinations by town to avoid reloading map too often
         all_pairs = sorted(AllPairs(parameters), key=lambda x: x[0])
 
@@ -369,7 +374,7 @@ class CARLAScenarioGenerator:
             all_scenarios.append(scenario)
             route_id += 1
 
-            with open(os.path.join(output_path, f'{town_map}_{event_type}_{weather_start}.json'), 'w') as f:
+            with open(os.path.join(f"{output_path}/{town_map}", f'{town_map}_{event_type}_{weather_start}.json'), 'w') as f:
                 json.dump(scenario, f, indent=2)
             
             print(f"Saving scenario {route_id}: Map={town_map}, "
