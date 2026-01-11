@@ -75,7 +75,7 @@ services:
     
 
   carla:
-    image: carlasim/carla:0.9.15
+    image: ghcr.io/intelligent-testing-lab/carla:0.9.15
     entrypoint: bash
     command: -c "./CarlaUE4.sh -carla-rpc-port=2000 -quality-level=Low -RenderOffScreen"
 
