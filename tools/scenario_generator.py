@@ -157,7 +157,7 @@ class CARLAScenarioGenerator:
         common_lanes = lanelet_ids[0].intersection(lanelet_ids[1])
         return not common_lanes
     
-    def _to_carla(self, point: np.ndarray) -> carla.Location:
+    def _to_carla(self, point: np.ndarray, is_spawn=False) -> carla.Location:
         """Convert 3D point to carla.Location
 
         Args:
@@ -166,7 +166,8 @@ class CARLAScenarioGenerator:
         Returns:
             carla.Location: CARLA compatible position_
         """
-        return carla.Location(point[0], point[1], 0.0)
+        # slightly above ground for spawn points
+        return carla.Location(point[0], point[1], 0.0 if not is_spawn else 0.2999)
 
     def _dist(self, p1: np.ndarray, p2: np.ndarray) -> np.floating:
         """ Euclidean distance between points
@@ -189,7 +190,7 @@ class CARLAScenarioGenerator:
         Returns:
             np.ndarray: Numpy array representation
         """
-        return np.array([point.x, point.y, point.z])
+        return np.array([point.x, point.y])
 
     def _get_spawn_points(self, town):
         """Get spawn points from CARLA map."""
@@ -200,48 +201,46 @@ class CARLAScenarioGenerator:
         """Generate a valid route with start and end waypoints."""
         all_points = self._get_all_lanelet_points(town)
         spawn_points = [self._to_np(spawn.location) for spawn in self._get_spawn_points(town)]
-
-
+        
         for _ in range(max_attempts):
             # randomly select a spawn point and lanelet
             spawn = random.sample(range(len(spawn_points)), 1)
-            print(spawn)
             finish = random.sample(range(len(all_points)), 1)
 
             p1, p2 = spawn_points[spawn[0]], all_points[finish[0]]
             print(f"Trying route from {p1} to {p2}")
+            
             # Check if points are far enough and not in the same lane
             if not self._dist(p1, p2) >= min_distance or not self._not_same_lane_check(p1, p2):
                 continue
             
             if self.valid_route([p1, p2]):
                 return [p1, p2]
-        
-    def valid_route(self, route) -> bool:
+    
+    def get_interpolated_route(self, route):
         carla_route = list(map(self._to_carla, route))
-
-        gps_route, route = route_manipulation.interpolate_trajectory(carla_route, grp=self._route_planner)
+        return route_manipulation.interpolate_trajectory(carla_route, grp=self._route_planner)
+     
+    def valid_route(self, route) -> bool:
+        gps_route, route = self.get_interpolated_route(route)
         return not ((len(gps_route) == 1) and (len(route) == 1))
 
-    def pick_trigger_point_on_route(self, waypoint_start, waypoint_end):
+    def pick_trigger_point_on_route(self, route):
         """Pick a random point along the route for scenario trigger."""
-        # Interpolate between start and end waypoints
-        # Pick a point between 20% and 80% of the route
-        t = random.uniform(0.2, 0.8)
-        trigger_point = waypoint_start + t * (waypoint_end - waypoint_start)
-        
-        # Calculate yaw angle (direction from start to end)
-        direction = waypoint_end - waypoint_start
-        yaw = float(np.degrees(np.arctan2(direction[1], direction[0])))
-        
-        return {
-            "x": float(trigger_point[0]),
-            "y": float(trigger_point[1]),
-            "z": 0.0,
-            "yaw": yaw
-        }
+        gps_route, route = self.get_interpolated_route(route)
 
-    def create_scenario_definition(self, town_map, weather_start, weather_end, 
+        if len(route) < 3:
+            return self._np_to_json(route[1])
+
+        # pick a random trigger index between 20% and 80% through the route
+        start_idx = int(0.2 * len(route))
+        end_idx = int(0.8 * len(route))
+        trigger_idx = random.randint(start_idx, end_idx - 1)
+        trigger_point = route[trigger_idx]
+        
+        return self._np_to_json(trigger_point)
+
+    def create_scenario_definition(self, town_map, weather_start, weather_end,  
                                    event_type, route_id, waypoints, trigger_point):
         """Create a complete scenario definition based on parameters."""
         # Create weather list with start and finish conditions
@@ -364,12 +363,12 @@ class CARLAScenarioGenerator:
             waypoints = self.generate_valid_route(town_map)
             
             # Pick trigger point along the route
-            trigger_point = self.pick_trigger_point_on_route(waypoints[0], waypoints[1])
+            trigger_point = self.pick_trigger_point_on_route(waypoints)
             
             # Create scenario definition
             scenario = self.create_scenario_definition(
                 town_map, weather_start, weather_end, 
-                event_type, route_id, waypoints, trigger_point
+                event_type, 0, waypoints, trigger_point
             )
             
             all_scenarios.append(scenario)
