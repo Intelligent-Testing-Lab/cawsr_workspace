@@ -232,8 +232,8 @@ class CARLAScenarioGenerator:
         trigger_point = route[trigger_idx]
         
         obj = self._np_to_json(self._to_np(trigger_point[0].location), is_spawn=True)
-        obj['yaw'] = float(trigger_point[0].rotation.yaw)
-        return obj
+        obj['position']['yaw'] = float(trigger_point[0].rotation.yaw)
+        return obj['position']
 
     def create_scenario_definition(self, town_map, weather_start, weather_end,  
                                    event_type, route_id, waypoints, trigger_point):
