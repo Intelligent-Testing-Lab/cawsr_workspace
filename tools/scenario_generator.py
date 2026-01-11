@@ -232,6 +232,7 @@ class CARLAScenarioGenerator:
         trigger_point = route[trigger_idx]
         
         
+        print(trigger_point)
         obj = self._np_to_json(self._to_np(trigger_point.location), is_spawn=True)
         obj['yaw'] = float(trigger_point.rotation.yaw)
         return obj
