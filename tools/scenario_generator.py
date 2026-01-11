@@ -231,7 +231,7 @@ class CARLAScenarioGenerator:
         trigger_idx = random.randint(start_idx, end_idx - 1)
         trigger_point = route[trigger_idx]
         
-        obj = self._np_to_json(self._to_np(trigger_point[0].location), is_spawn=True)
+        obj = self._np_to_json(self._to_np(trigger_point[0].location))
         obj['position']['yaw'] = float(trigger_point[0].rotation.yaw)
         return obj['position']
 
